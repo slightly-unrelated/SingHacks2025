@@ -6,3 +6,6 @@ numpy
 xgboost
 matplotlib
 seaborn
+fastapi 
+uvicorn 
+python-multipart
