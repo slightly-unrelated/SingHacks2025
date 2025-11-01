@@ -1,0 +1,608 @@
+{
+  "file": "doc_processing\\output_images\\test_p0_ocr.json",
+  "summary": {
+    "lines": 44,
+    "tokens": 293,
+    "template_match": 0.857,
+    "completeness": 0.857,
+    "order_score": 0.75
+  },
+  "risk": {
+    "score": 63,
+    "factors": {
+      "double": 36,
+      "fonts": 4,
+      "indent": 17,
+      "spelling": 3,
+      "missing": 1,
+      "order": 1,
+      "template": 0.8571428571428571,
+      "completeness": 0.8571428571428571
+    }
+  },
+  "issues": [
+    {
+      "type": "double-spacing",
+      "line": 3,
+      "gaps": [
+        [
+          1,
+          22
+        ],
+        [
+          4,
+          1263
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 4,
+      "gaps": [
+        [
+          1,
+          20
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 7,
+      "gaps": [
+        [
+          3,
+          137
+        ]
+      ],
+      "median_gap": 13
+    },
+    {
+      "type": "double-spacing",
+      "line": 8,
+      "gaps": [
+        [
+          0,
+          32
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "double-spacing",
+      "line": 10,
+      "gaps": [
+        [
+          0,
+          106
+        ],
+        [
+          5,
+          42
+        ],
+        [
+          6,
+          109
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "double-spacing",
+      "line": 11,
+      "gaps": [
+        [
+          14,
+          43
+        ],
+        [
+          15,
+          247
+        ],
+        [
+          16,
+          154
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 12,
+      "gaps": [
+        [
+          3,
+          53
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "double-spacing",
+      "line": 14,
+      "gaps": [
+        [
+          8,
+          35
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 16,
+      "gaps": [
+        [
+          7,
+          33
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 18,
+      "gaps": [
+        [
+          7,
+          34
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 20,
+      "gaps": [
+        [
+          6,
+          33
+        ],
+        [
+          7,
+          20
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "double-spacing",
+      "line": 22,
+      "gaps": [
+        [
+          15,
+          174
+        ]
+      ],
+      "median_gap": 9
+    },
+    {
+      "type": "double-spacing",
+      "line": 29,
+      "gaps": [
+        [
+          2,
+          217
+        ],
+        [
+          4,
+          683
+        ]
+      ],
+      "median_gap": 57
+    },
+    {
+      "type": "double-spacing",
+      "line": 30,
+      "gaps": [
+        [
+          3,
+          297
+        ],
+        [
+          4,
+          57
+        ]
+      ],
+      "median_gap": 12
+    },
+    {
+      "type": "double-spacing",
+      "line": 31,
+      "gaps": [
+        [
+          1,
+          310
+        ],
+        [
+          3,
+          87
+        ]
+      ],
+      "median_gap": 47
+    },
+    {
+      "type": "double-spacing",
+      "line": 32,
+      "gaps": [
+        [
+          2,
+          318
+        ],
+        [
+          3,
+          56
+        ]
+      ],
+      "median_gap": 31
+    },
+    {
+      "type": "double-spacing",
+      "line": 33,
+      "gaps": [
+        [
+          5,
+          43
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "double-spacing",
+      "line": 34,
+      "gaps": [
+        [
+          0,
+          16
+        ],
+        [
+          8,
+          272
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 35,
+      "gaps": [
+        [
+          4,
+          27
+        ],
+        [
+          11,
+          21
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 36,
+      "gaps": [
+        [
+          3,
+          15
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 37,
+      "gaps": [
+        [
+          3,
+          50
+        ]
+      ],
+      "median_gap": 26
+    },
+    {
+      "type": "double-spacing",
+      "line": 42,
+      "gaps": [
+        [
+          2,
+          47
+        ],
+        [
+          5,
+          15
+        ]
+      ],
+      "median_gap": 8
+    },
+    {
+      "type": "double-spacing",
+      "line": 43,
+      "gaps": [
+        [
+          8,
+          153
+        ]
+      ],
+      "median_gap": 7
+    },
+    {
+      "type": "irregular-font",
+      "line": 7,
+      "cv": 0.337,
+      "mean": 14.6
+    },
+    {
+      "type": "irregular-font",
+      "line": 25,
+      "cv": 0.411,
+      "mean": 15.0
+    },
+    {
+      "type": "irregular-font",
+      "line": 28,
+      "cv": 0.539,
+      "mean": 19.75
+    },
+    {
+      "type": "irregular-font",
+      "line": 29,
+      "cv": 0.4,
+      "mean": 17.83
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 1,
+      "left": 629,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 2,
+      "left": 430,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 9,
+      "left": 214,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 10,
+      "left": 1090,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 13,
+      "left": 364,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 15,
+      "left": 852,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 17,
+      "left": 852,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 19,
+      "left": 750,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 21,
+      "left": 687,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 23,
+      "left": 156,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 26,
+      "left": 156,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 33,
+      "left": 739,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 34,
+      "left": 154,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 37,
+      "left": 656,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 38,
+      "left": 1038,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 40,
+      "left": 368,
+      "dominant": 128
+    },
+    {
+      "type": "indent-inconsistent",
+      "line": 42,
+      "left": 761,
+      "dominant": 128
+    },
+    {
+      "type": "spelling",
+      "at": {
+        "text": "Mrjohn",
+        "conf": 38.0,
+        "left": 274,
+        "top": 338,
+        "width": 71,
+        "height": 20
+      },
+      "conf": 38.0
+    },
+    {
+      "type": "spelling",
+      "at": {
+        "text": "Statement",
+        "conf": 39.0,
+        "left": 196,
+        "top": 869,
+        "width": 105,
+        "height": 16
+      },
+      "conf": 39.0
+    },
+    {
+      "type": "spelling",
+      "at": {
+        "text": "purpOse",
+        "conf": 36.0,
+        "left": 500,
+        "top": 3368,
+        "width": 82,
+        "height": 21
+      },
+      "conf": 36.0
+    },
+    {
+      "type": "missing-section",
+      "header": "address"
+    },
+    {
+      "type": "incorrect-header",
+      "at": {
+        "text": "Date:",
+        "conf": 96.0,
+        "left": 130,
+        "top": 289,
+        "width": 52,
+        "height": 16
+      },
+      "got": "Date:",
+      "want": "name"
+    },
+    {
+      "type": "incorrect-header",
+      "at": {
+        "text": "Name:",
+        "conf": 92.0,
+        "left": 195,
+        "top": 339,
+        "width": 62,
+        "height": 16
+      },
+      "got": "Name:",
+      "want": "date"
+    },
+    {
+      "type": "incorrect-header",
+      "at": {
+        "text": "Adress:",
+        "conf": 93.0,
+        "left": 130,
+        "top": 369,
+        "width": 72,
+        "height": 16
+      },
+      "got": "Adress:",
+      "want": "address"
+    },
+    {
+      "type": "incorrect-header",
+      "at": {
+        "text": "Date:",
+        "conf": 92.0,
+        "left": 619,
+        "top": 1141,
+        "width": 52,
+        "height": 17
+      },
+      "got": "Date:",
+      "want": "name"
+    },
+    {
+      "type": "structure-order",
+      "detail": [
+        {
+          "type": "order",
+          "a": "date",
+          "b": "client",
+          "posA": 4,
+          "posB": 2
+        }
+      ]
+    }
+  ],
+  "structure_positions": {
+    "ref": 3,
+    "date": 4,
+    "client": 2,
+    "name": 5,
+    "address": null,
+    "nationality": 7,
+    "subject": 8
+  },
+  "checks": {
+    "format_validation": {
+      "double_spacing": 36,
+      "irregular_fonts": 4,
+      "indent_inconsistent": 17
+    },
+    "content_validation": {
+      "spelling_flags": 3,
+      "missing_sections": [
+        "address"
+      ]
+    },
+    "structure_analysis": {
+      "order_score": 0.75,
+      "completeness": 0.857
+    },
+    "template_matching": {
+      "headers": [
+        "ref",
+        "date",
+        "client",
+        "name",
+        "address",
+        "nationality",
+        "subject"
+      ],
+      "match": 0.857
+    }
+  },
+  "audit": [
+    "items:293",
+    "lines:44",
+    "double_spacing_flags:36",
+    "irregular_font_lines:4",
+    "indent_flags:17",
+    "spelling_flags:3",
+    "completeness:0.857;order:0.75",
+    "template_match:0.857"
+  ]
+}
