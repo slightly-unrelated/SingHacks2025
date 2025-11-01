@@ -149,3 +149,5 @@ Desktop.ini
 .conda/
 *.conda
 doc_processing/output_images/
+api/doc_processing/output_images/
+aml-dashboard/doc_processing/output_images/
