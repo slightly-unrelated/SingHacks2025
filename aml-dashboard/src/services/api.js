@@ -1,6 +1,6 @@
 // API Service for communicating with the FastAPI backend
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://localhost:4000';
 
 /**
  * Upload a CSV file for transaction risk analysis

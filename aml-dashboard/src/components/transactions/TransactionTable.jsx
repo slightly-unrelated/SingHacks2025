@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import RiskBadge from '../shared/RiskBadge';
 
 const TransactionTable = ({ transactions }) => {
   const [expandedRow, setExpandedRow] = useState(null);
   const [filterRisk, setFilterRisk] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
 
   const filteredTransactions = transactions.filter((t) => {
     if (filterRisk === 'all') return true;
@@ -13,8 +15,29 @@ const TransactionTable = ({ transactions }) => {
 
   const sortedTransactions = [...filteredTransactions].sort((a, b) => b.riskScore - a.riskScore);
 
+  const totalItems = sortedTransactions.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  const page = Math.min(currentPage, totalPages);
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const pageData = sortedTransactions.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    // Reset to first page on filter or data change
+    setCurrentPage(1);
+    setExpandedRow(null);
+  }, [filterRisk, transactions]);
+
   const toggleExpand = (id) => {
     setExpandedRow(expandedRow === id ? null : id);
+  };
+
+  const goToPage = (p) => {
+    const clamped = Math.min(Math.max(1, p), totalPages);
+    if (clamped !== currentPage) {
+      setExpandedRow(null);
+      setCurrentPage(clamped);
+    }
   };
 
   return (
@@ -24,7 +47,7 @@ const TransactionTable = ({ transactions }) => {
         <div>
           <h2 className="text-xl font-semibold text-primary-navy">High-Risk Account Analysis</h2>
           <p className="text-sm text-text-secondary mt-1">
-            {sortedTransactions.length} account(s) flagged (sorted by risk score)
+            {totalItems} account(s) flagged (sorted by risk score)
           </p>
         </div>
         <div className="flex items-center space-x-3">
@@ -39,6 +62,19 @@ const TransactionTable = ({ transactions }) => {
             <option value="medium">Medium Risk</option>
             <option value="low">Low Risk</option>
           </select>
+          <div className="ml-4 flex items-center space-x-2">
+            <label className="text-sm text-text-secondary">Rows per page:</label>
+            <select
+              value={pageSize}
+              onChange={(e) => setPageSize(parseInt(e.target.value))}
+              className="px-3 py-2 border border-surface-iron rounded focus:outline-none focus:ring-2 focus:ring-primary-light"
+            >
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -72,10 +108,9 @@ const TransactionTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {sortedTransactions.map((account) => (
-              <>
+            {pageData.map((account) => (
+              <React.Fragment key={account.id}>
                 <tr
-                  key={account.id}
                   className="border-b border-surface-grey hover:bg-surface-grey/50 transition-colors cursor-pointer"
                   onClick={() => toggleExpand(account.id)}
                 >
@@ -238,11 +273,37 @@ const TransactionTable = ({ transactions }) => {
                     </td>
                   </tr>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Pagination controls */}
+      {totalPages > 1 && (
+        <div className="mt-4 flex items-center justify-between text-sm text-text-secondary">
+          <div>
+            Showing {Math.min(totalItems, startIndex + 1)}–{Math.min(totalItems, endIndex)} of {totalItems}
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              className="px-3 py-1 border border-surface-iron rounded disabled:opacity-50"
+              onClick={() => goToPage(page - 1)}
+              disabled={page <= 1}
+            >
+              Previous
+            </button>
+            <span className="px-2">Page {page} of {totalPages}</span>
+            <button
+              className="px-3 py-1 border border-surface-iron rounded disabled:opacity-50"
+              onClick={() => goToPage(page + 1)}
+              disabled={page >= totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
