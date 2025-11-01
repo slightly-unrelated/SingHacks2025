@@ -7,7 +7,6 @@ const Header = () => {
     { path: '/', label: 'Dashboard' },
     { path: '/transactions', label: 'Transaction Monitoring' },
     { path: '/documents', label: 'Document Analysis' },
-    { path: '/cross-reference', label: 'Cross-Reference' },
   ];
 
   const isActive = (path) => {
