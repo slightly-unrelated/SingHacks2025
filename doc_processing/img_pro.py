@@ -54,8 +54,8 @@ def clean_scan(path, output=None):
 
 
 
-def ocr_to_json(path, output_json, lang="eng", psm=3):
-	img = deskew(auto_orient(cv2.imread(path)))
+def ocr_to_json(input_img, output_json, lang="eng", psm=3):
+	img = deskew(auto_orient(input_img))
 	data = pytesseract.image_to_data(img, lang=lang, config=f"--psm {psm}", output_type=pytesseract.Output.DICT)
 	items = []
 	for i, text in enumerate(data["text"]):
@@ -73,7 +73,3 @@ def ocr_to_json(path, output_json, lang="eng", psm=3):
 	with open(output_json, "w", encoding="utf-8") as f:
 		json.dump(items, f, ensure_ascii=False, indent=2)
 	return output_json
-
-
-clean_scan("doc_processing/output_images/test_p0.png", "doc_processing/output_images/test_p0_cleaned.png")
-ocr_to_json("doc_processing/output_images/test_p0.png", "doc_processing/output_images/test_p0_ocr.json")

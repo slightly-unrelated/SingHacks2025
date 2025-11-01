@@ -148,3 +148,4 @@ Desktop.ini
 # Conda
 .conda/
 *.conda
+doc_processing/output_images/
