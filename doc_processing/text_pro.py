@@ -191,7 +191,3 @@ def analyze(path: str, out: str|None=None, out_txt: str|None=None):
 			f.write(f"Content: spelling={n_spell}, missing={missing}\n")
 			for i,iss in enumerate(issues,1): f.write(f"{i}. {iss['type']}: { {k:v for k,v in iss.items() if k!='type'} }\n")
 	return rep_json
-
-
-analyze("doc_processing/output_images/test_p0_ocr.json",
-        out="doc_processing/output_images/test_p0_report.json")

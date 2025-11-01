@@ -1,9 +1,8 @@
-<<<<<<< Updated upstream
 # macOS / Windows
 .DS_Store
 Thumbs.db
 desktop.ini
-=======
+
 # Dependencies
 node_modules/
 aml-dashboard/node_modules/
@@ -37,13 +36,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
->>>>>>> Stashed changes
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
-<<<<<<< Updated upstream
 *.pyd
 .env/
 venv/
@@ -117,6 +114,7 @@ pids/
 # Misc
 *.bak
 *.tmp
+<<<<<<< HEAD
 =======
 *.so
 .Python
@@ -150,3 +148,6 @@ Desktop.ini
 .conda/
 *.conda
 >>>>>>> Stashed changes
+=======
+doc_processing/output_images/
+>>>>>>> 795e9af (added API)
