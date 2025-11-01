@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-text-primary bg-surface-white;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-navy text-white px-6 py-2.5 rounded hover:bg-primary-blue transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply border border-primary-navy text-primary-navy px-6 py-2.5 rounded hover:bg-primary-navy hover:text-white transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-subtle p-6;
+  }
+
+  .risk-badge-low {
+    @apply bg-risk-low/10 text-risk-low px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .risk-badge-medium {
+    @apply bg-risk-medium/10 text-risk-medium px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .risk-badge-high {
+    @apply bg-risk-high/10 text-risk-high px-3 py-1 rounded-full text-sm font-medium;
+  }
+}
