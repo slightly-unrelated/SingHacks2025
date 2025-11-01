@@ -14,6 +14,7 @@ from torch_geometric.utils import k_hop_subgraph
 from sklearn.preprocessing import StandardScaler
 from typing import Dict, List, Tuple
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 # --- Configuration for Live Run ---
@@ -258,10 +259,10 @@ async def lifespan(app: FastAPI):
         model.load_state_dict(torch.load(CHAMPION_MODEL_FILE, map_location=GLOBAL_ASSETS['device']))
         model.eval()
         GLOBAL_ASSETS['model'] = model
-        print("✅ Global Assets loaded successfully. API Ready.")
+        print("Global Assets loaded successfully. API Ready.")
 
     except FileNotFoundError as e:
-        print(f"❌ FATAL ERROR: Asset file not found: {e}. Check paths: {CHAMPION_MODEL_FILE}, {SCALER_FILE}, {ACCOUNT_MAP_FILE}")
+        print(f"FATAL ERROR: Asset file not found: {e}. Check paths: {CHAMPION_MODEL_FILE}, {SCALER_FILE}, {ACCOUNT_MAP_FILE}")
         GLOBAL_ASSETS['model'] = None # Mark as failed
         raise
         
@@ -269,9 +270,18 @@ async def lifespan(app: FastAPI):
     print("--- API Shutdown ---")
 
 app = FastAPI(
-    title="AML GNN Batch Inference Service", 
-    version="V3.1", 
+    title="AML GNN Batch Inference Service",
+    version="V3.1",
     lifespan=lifespan
+)
+
+# Add CORS middleware to allow frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Frontend origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # --- 6. API Endpoint ---
