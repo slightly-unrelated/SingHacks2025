@@ -114,8 +114,6 @@ pids/
 # Misc
 *.bak
 *.tmp
-<<<<<<< HEAD
-=======
 *.so
 .Python
 doc_processing/__pycache__/
@@ -147,7 +145,6 @@ Desktop.ini
 # Conda
 .conda/
 *.conda
->>>>>>> Stashed changes
-=======
 doc_processing/output_images/
->>>>>>> 795e9af (added API)
+api/doc_processing/output_images/
+aml-dashboard/doc_processing/output_images/

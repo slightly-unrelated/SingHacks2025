@@ -158,8 +158,9 @@ def analyze(path: str, out: str|None=None, out_txt: str|None=None):
 
 	issues = ds+rf+ind+cont+struct
 	counts={"double":n_ds,"fonts":n_rf,"indent":n_ind,"spelling":n_spell,"missing":len(missing),
-			"order": (1 if 0<order_score<1 else 0), "template":tmpl, "completeness":complete}
-	score=risk_score(counts)
+		"order": (1 if 0<order_score<1 else 0), "template":tmpl, "completeness":complete}
+	counts_for_risk=counts.copy(); counts_for_risk["spelling"]=0 
+	score=risk_score(counts_for_risk)
 
 	report={
 		"file": str(p),
