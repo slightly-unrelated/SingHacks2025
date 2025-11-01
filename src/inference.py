@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from typing import Dict, List, Tuple
 
 # --- Configuration for Live Run ---
-LIVE_DATA_FILE = 'dataset/transactions_mock_1000_for_participants.csv' # THIS IS THE INCOMING TRANSACTION LIVE
+LIVE_DATA_FILE = 'dataset/transactions_mock_1000_for_participants.csv' # THIS IS THE INCOMING TRANSACTION
 CHAMPION_MODEL_FILE = 'inductive_model_champion_V3.pth'
 SCALER_FILE = 'scaler_V3.pkl' # MUST be the same one used for training
 ACCOUNT_MAP_FILE = 'account_map_V3.pkl' # MUST be the same one used for training
@@ -337,7 +337,7 @@ def run_live_inference():
     account_ids = [s.account_id for s in subgraph_list]
     
     alert_df = pd.DataFrame({
-        'Account_ID': account_ids,
+        'originator_account': account_ids,
         'Risk_Score': risk_scores
     })
 
