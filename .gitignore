@@ -2,3 +2,29 @@ dataset
 .venv
 singhacks
 .ipynb_checkpoints
+
+# Node.js dependencies
+node_modules/
+aml-dashboard/node_modules/
+
+# Build outputs
+aml-dashboard/dist/
+aml-dashboard/build/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
