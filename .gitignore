@@ -1,3 +1,8 @@
+dataset
+.venv
+singhacks
+.ipynb_checkpoints
+
 # macOS / Windows
 .DS_Store
 Thumbs.db
@@ -73,7 +78,7 @@ package-lock.json?(!)
 .pnpm-store/
 .npm/
 
-# Vite 
+# Vite
 dist/
 build/
 .vite/
@@ -109,7 +114,7 @@ pids/
 *.njsproj
 *.sln
 *.sw?
-*~ 
+*~
 
 # Misc
 *.bak
