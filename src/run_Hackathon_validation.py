@@ -12,6 +12,84 @@ from torch_geometric.loader import DataLoader
 from torch_geometric.data import Data
 from torch_geometric.utils import k_hop_subgraph
 
+
+def preprocess_hackathon_data(input_file):
+    """
+    Loads the hackathon data, renames/engineers columns to match our
+    V2 training data format, and saves a new 'cleaned' CSV.
+    """
+    print(f"Loading hackathon data from '{input_file}'...")
+    if not os.path.exists(input_file):
+        print(f"Error: File not found at {input_file}")
+        return
+
+    df = pd.read_csv(input_file)
+    print("Original columns:", df.columns.tolist())
+
+    # --- 1. Define the "Adapter" Map ---
+    # Maps (Their Column Name) -> (Our Column Name)
+    column_map = {
+        'originator_account': 'Sender_account',
+        'beneficiary_account': 'Receiver_account',
+        'amount': 'Amount',
+        'booking_datetime': 'Timestamp', # We'll create Date/Time from this
+        'originator_country': 'Sender_bank_location',
+        'beneficiary_country': 'Receiver_bank_location',
+        'channel': 'Payment_type',
+        # We can map other columns if our V2 script uses them,
+        # but these are the essentials.
+    }
+
+    # Rename columns
+    df.rename(columns=column_map, inplace=True)
+
+    # --- 2. Engineer the Label ---
+    # Convert 'str_filed_datetime' to a 1/0 label
+    # We assume 'not null' means it IS laundering
+    if 'str_filed_datetime' in df.columns:
+        df['Is_laundering'] = np.where(df['str_filed_datetime'].notnull(), 1, 0)
+    else:
+        # If no label, assume all are 0 (for final test data)
+        df['Is_laundering'] = 0
+
+    # --- 3. Engineer Date and Time columns ---
+    # Our build_graph_v2.py script *expects* 'Date' and 'Time'
+    if 'Timestamp' in df.columns:
+        print("Parsing 'Timestamp' into 'Date' and 'Time'...")
+        df['Timestamp'] = pd.to_datetime(df['Timestamp'], errors='coerce')
+        df['Date'] = df['Timestamp'].dt.strftime('%Y-%m-%d')
+        df['Time'] = df['Timestamp'].dt.strftime('%H:%M:%S')
+    else:
+        print("Error: Could not find 'booking_datetime' (renamed to 'Timestamp').")
+        return
+
+    # --- 4. Filter for *Only* the columns our script needs ---
+    # This drops all the extra "golden" features we can't use
+    required_columns = [
+        'Time', 'Date', 'Sender_account', 'Receiver_account', 'Amount',
+        'Payment_currency', 'Received_currency', 'Sender_bank_location',
+        'Receiver_bank_location', 'Payment_type', 'Is_laundering'
+    ]
+    
+    # Handle columns that might not exist in their data but are in ours
+    # (e.g., Payment_currency, Received_currency)
+    for col in required_columns:
+        if col not in df.columns:
+            print(f"Warning: Column '{col}' not found. Filling with 'NULL'.")
+            # We map 'currency' to 'Payment_currency' as a fallback
+            if col == 'Payment_currency' and 'currency' in df.columns:
+                df['Payment_currency'] = df['currency']
+            # We can't know received, so just copy payment
+            elif col == 'Received_currency' and 'Payment_currency' in df.columns:
+                 df['Received_currency'] = df['Payment_currency']
+            else:
+                df[col] = 'NULL' # Create a placeholder
+
+    # Filter for *only* these columns
+    df_cleaned = df[required_columns]
+
+    return df_cleaned
+
 # --- 1. Inductive GNN Model Definition ---
 # This class MUST be identical to the one in train_inductive_model_V3.py
 class InductiveGNN(Module):
@@ -148,6 +226,7 @@ def validate_on_hackathon_data(hackathon_graph_path, champion_model_path, config
     print("---------------------------------")
 
 if __name__ == "__main__":
+    
     
     # --- Configuration ---
     # This is the graph you created from their 1000-row sample
