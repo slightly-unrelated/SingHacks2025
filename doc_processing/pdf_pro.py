@@ -12,6 +12,3 @@ def pdf_to_png(pdf, out_dir):
             lp(i).get_pixmap(matrix=fitz.Matrix(1, 1), alpha=False).save(f)
             out.append(f)
     return out
-
-
-print(pdf_to_png("test.pdf", "doc_processing\\output_images"))

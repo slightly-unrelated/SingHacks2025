@@ -3,7 +3,6 @@ import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Documents from './pages/Documents';
-import CrossReference from './pages/CrossReference';
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/documents" element={<Documents />} />
-          <Route path="/cross-reference" element={<CrossReference />} />
         </Routes>
       </Layout>
     </Router>
