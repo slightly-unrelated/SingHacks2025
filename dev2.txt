@@ -1,0 +1,161 @@
+
+Plutus is an advanced Anti-Money Laundering (AML) detection system that leverages Graph Neural Networks (GNNs) to identify suspicious financial transactions and high-risk accounts. The system combines transaction network analysis with document verification to provide comprehensive compliance monitoring.
+
+Key Features
+Graph Neural Network Analysis: Uses an inductive GNN model with SAGEConv layers to detect suspicious transaction patterns
+Multi-Modal Detection: Analyzes both transaction networks and document content
+Behavioral Feature Engineering: Extracts 26+ behavioral features including:
+Cross-border transaction patterns
+Night-time transaction detection
+Payment channel analysis
+Transaction frequency and velocity
+Account age and history
+Real-Time Dashboard: Modern React-based UI for compliance officers
+Document Processing: OCR-based document verification with Tesseract
+Scalable Architecture: Inductive learning approach handles new accounts not seen during training
+Pre-trained Models: Production-ready champion model included
+Tech Stack
+Backend
+FastAPI - High-performance API framework
+PyTorch + PyTorch Geometric - Graph Neural Network implementation
+scikit-learn - Feature preprocessing and scaling
+Pandas/NumPy - Data processing
+OpenCV - Image processing
+Tesseract OCR - Document text extraction
+PyMuPDF - PDF processing
+Frontend
+React 19 - UI framework
+Vite - Build tool and dev server
+TailwindCSS - Styling framework
+React Router - Navigation
+jsPDF - PDF report generation
+Machine Learning
+Graph Neural Networks - SAGEConv architecture with 3 layers
+Inductive Learning - Handles unseen nodes at inference time
+Feature Engineering - Custom transaction behavioral features
+Architecture Overview
+┌─────────────────────────────────────────────────────────┐
+│                    Frontend (React)                      │
+│  Dashboard | Transactions | Documents | Risk Alerts      │
+└─────────────────┬───────────────────────────────────────┘
+                  │ HTTP/REST
+┌─────────────────▼───────────────────────────────────────┐
+│                 FastAPI Backend                          │
+│  ┌───────────────────────┐  ┌─────────────────────────┐ │
+│  │   Document Processing │  │   GNN Inference Engine  │ │
+│  │   - PDF to Image      │  │   - Graph Builder       │ │
+│  │   - OCR Extraction    │  │   - Feature Engineering │ │
+│  │   - Text Analysis     │  │   - Risk Scoring        │ │
+│  └───────────────────────┘  └─────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                  │
+┌─────────────────▼───────────────────────────────────────┐
+│              Pre-trained Assets                          │
+│  - GNN Model Weights (PyTorch)                          │
+│  - Feature Scaler (scikit-learn)                        │
+│  - Account Mapping (Training baseline)                  │
+└─────────────────────────────────────────────────────────┘
+Prerequisites
+System Requirements
+Python 3.8+
+Node.js 16+ and npm
+Tesseract OCR (for document processing)
+Installing Tesseract
+Windows:
+
+# Download installer from:
+# https://github.com/UB-Mannheim/tesseract/wiki
+# Add to PATH during installation
+macOS:
+
+brew install tesseract
+Linux (Ubuntu/Debian):
+
+sudo apt install tesseract-ocr
+sudo apt install libtesseract-dev
+Installation & Setup
+1. Clone the Repository
+git clone https://github.com/yourusername/SingHacks2025.git
+cd SingHacks2025
+2. Backend Setup
+# Create and activate virtual environment
+python -m venv venv
+
+# On Windows:
+venv\Scripts\activate
+
+# On macOS/Linux:
+source venv/bin/activate
+VALUATION PREMIUM
+
+Apple / Amazon / Tesla platform premium comparison — bar chart showing Apple at ~75%, Amazon at ~125%, Tesla at 467% above SOTP. Makes the "most expensive platform premium in history" claim visual
+Tesla EV/Sales vs Waymo, Uber, BYD, Toyota — shows what the autonomous and automotive businesses would trade at standalone, validating the $69 SOTP floor
+Price-to-sales history — Tesla at 14.6x trailing P/S vs its own history and vs auto peers at 0.3–0.8x. Shows how far detached it is from the industry
+
+SENTIMENT / ELON PREMIUM
+
+Tesla stock vs Elon news events — scatter or annotated line chart showing TSLA price reaction on days of major Musk headlines (DOGE appointment, Twitter acquisition, Tesla earnings calls). Quantifies the sentiment dependency
+Tesla vs S&P 500 post-election — indexed return chart from Nov 5 2024, showing Tesla's re-rating vs the broader market to isolate the political tailwind component
+SpaceX private valuation vs Tesla market cap over time — shows SpaceX closing the gap, making the rotation risk argument concrete. SpaceX was last valued ~$350B vs Tesla ~$1.25T
+
+CATALYST / TIMELINE RISK
+
+Tesla timeline slippage Gantt chart — the one we discussed earlier. Announced vs promised vs actual for Semi, Cybertruck, Roadster, FSD, Robotaxi
+FSD penetration rate — what % of Tesla fleet actually pays for FSD today (~12% per your document) vs what the bull case requires. Shows how far from scale the subscription model is
+Waymo vs Tesla autonomous miles — Waymo has logged tens of millions of fully driverless miles; Tesla has none at scale yet. Makes the regulatory and technical gap concrete
+
+EARNINGS / FINANCIAL MODEL
+
+Tesla gross margin by segment — automotive margin has compressed from ~30% in 2022 to ~18% today. Shows the core business deterioration that the autonomous thesis must offset
+EPS revisions over time — how street consensus FY2026 and FY2027 EPS estimates have moved over the last 12–18 months. If they've been consistently revised down, it supports your below-consensus FY2026 view
+Revenue concentration risk — pie chart showing automotive still represents ~75% of revenue, making the diversification thesis a future story not a current one
+Operating leverage scenario table — what happens to EPS in 2027 if Cybercab/FSD slips 2 quarters. A simple sensitivity table (rows = revenue scenarios, columns = margin assumptions) makes the binary nature of the bet legible
+
+COMPETITIVE CONTEXT
+
+Global EV market share — Tesla's share has fallen from ~70% in 2020 to ~18% in 2025 as BYD, Chinese OEMs, and legacy auto have scaled. Challenges the moat narrative
+Tesla delivery growth vs revenue growth — deliveries fell in 2024 and 2025 even as the stock re-rated upward. The decoupling of fundamentals from price is itself the argument
+
+The three I'd prioritise next given what you already have:
+
+The Gantt timeline slippage chart — most original, hardest to argue with, directly supports the catalyst risk section
+Tesla market share erosion — simple, sourced from public data, challenges the moat
+EPS sensitivity table — turns the "2-quarter slip" argument into a number investors can actually stress test
+# Install Python dependencies
+pip install -r requirements.txt
+3. Frontend Setup
+cd aml-dashboard
+npm install
+cd ..
+4. Verify Tesseract Installation
+tesseract --version
+If Tesseract is not found, ensure it's added to your system PATH.
+
+Running the Application
+Start the Backend API
+# From project root
+python api/api.py
+The API will be available at http://localhost:4000
+
+Start the Frontend Dashboard
+# In a new terminal
+cd aml-dashboard
+npm run dev
+The dashboard will be available at http://localhost:5173
+
+Usage
+1. Transaction Analysis (Batch Inference)
+Upload a CSV file containing transactions to detect high-risk accounts:
+
+Endpoint: POST /api/v1/infer_batch
+
+CSV Format (Auto-detected):
+
+Supports two column naming conventions:
+Sender_account, Receiver_account, Amount, Payment_type, Sender_bank_location, Receiver_bank_location, Date, Time
+originator_account, beneficiary_account, amount, channel, originator_country, beneficiary_country, booking_datetime
+Example:
+
+curl -X POST http://localhost:4000/api/v1/infer_batch \
+  -F "file=@transactions_mock_1000_for_participants.csv"
+Response:
